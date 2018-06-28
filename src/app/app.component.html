@@ -1,0 +1,53 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{ title }}
+  </h1>
+<div>
+  <label>Buscar por id:
+    <input [(ngModel)]="idProducto" placeholder="">
+  </label>
+  <button (click)=verProduct()>Consultar</button><button (click)=llenarLista()>Ver Todos</button>
+</div>
+
+</div>
+
+<br>
+<table class="table">
+  <thead>
+     <tr>
+         <th>id</th>
+         <th>nombre</th>
+         <th>precio</th>
+         <!-- <th ng-repeat="producto in vm.lanes">{{lane}}</th> -->
+      </tr>
+  </thead>
+ 
+  <tbody>
+    <tr *ngFor="let producto of productosL">
+        <td>{{ producto.id }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.precio }}</td>
+    </tr>
+  </tbody>
+  
+</table>
+
+
+
+
+
+<!--
+<div>
+  <label>Fecha:
+    <input [(ngModel)]="dateInspect" placeholder="dd-mm-aaaa">
+  </label>
+  <br>
+  <label>Indicador:
+    <input [(ngModel)]="indicador" placeholder="uf, ivp, etc">
+  </label>
+  <br>
+  <button (click)=searchIndicator()>Consultar</button>
+  <h2>Valor: ${{valueUf}}</h2>
+</div>
+-->
