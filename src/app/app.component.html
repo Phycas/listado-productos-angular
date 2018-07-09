@@ -5,21 +5,48 @@
   </h1>
 <div>
   <label>Buscar por id:
-    <input [(ngModel)]="idProducto" placeholder="">
+    <input  [(ngModel)]="idProducto" placeholder="">
   </label>
-  <button (click)=verProduct()>Consultar</button><button (click)=llenarLista()>Ver Todos</button>
+  
+  <button mat-raised-button  color="warn" (click)=verProduct()>Consultar</button><button mat-raised-button color="primary" (click)=llenarLista()>Ver Todos</button>
 </div>
-
+<button mat-button color="primary">Primary</button>
 </div>
 
 <br>
-<table class="table">
+
+<table mat-table [dataSource]="productosL" class="mat-elevation-z8">
+ 
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Nombre Column -->
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+  </ng-container>
+
+  <!-- Precio Column -->
+  <ng-container matColumnDef="precio">
+    <th mat-header-cell *matHeaderCellDef> Precio </th>
+    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<!-- <table class="table">
   <thead>
      <tr>
          <th>id</th>
          <th>nombre</th>
          <th>precio</th>
-         <!-- <th ng-repeat="producto in vm.lanes">{{lane}}</th> -->
+        
       </tr>
   </thead>
  
@@ -31,23 +58,4 @@
     </tr>
   </tbody>
   
-</table>
-
-
-
-
-
-<!--
-<div>
-  <label>Fecha:
-    <input [(ngModel)]="dateInspect" placeholder="dd-mm-aaaa">
-  </label>
-  <br>
-  <label>Indicador:
-    <input [(ngModel)]="indicador" placeholder="uf, ivp, etc">
-  </label>
-  <br>
-  <button (click)=searchIndicator()>Consultar</button>
-  <h2>Valor: ${{valueUf}}</h2>
-</div>
--->
+</table> -->
