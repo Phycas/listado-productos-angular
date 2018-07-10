@@ -69,20 +69,21 @@ export class AppComponent {
 
  verProduct() {
         this.productosL = [];
-       this.productosService.verProducto(this.idProducto)
+        this.productosService.verProducto(this.idProducto)
        .subscribe(
            (res: Response) => {
              const producto = res.json();
              console.log(producto);
              this.productosL[0] = producto;
+             console.log(this.productosL[0]);
             }, err => {
              console.log('Error:');
              console.log(err);
-           }, () => {
-             console.log('¡Servicio Finalizado!');
+            }, () => {
+             console.log('¡Producto Seleccionado!');
            }
        );
-           this.table.renderRows();
+        this.table.renderRows();
      }
      
 
