@@ -18,12 +18,12 @@ import { LayoutModule } from '@angular/cdk/layout';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     BrowserAnimationsModule,
     FormsModule,
     MatButtonModule,
     MatInputModule,
     MatCheckboxModule,
-    HttpModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,

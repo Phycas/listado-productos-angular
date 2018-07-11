@@ -3,7 +3,7 @@ import { IndicadorsService } from './indicadors.service';
 import { ProductosService } from './productos.service';
 import { Producto } from './producto';
 import { Http, Response} from '@angular/http';
-import { MatTable } from '@angular/material';
+import { MatTable, MatTableDataSource } from '@angular/material';
 
 export interface PeriodicElement {
   name: string;
@@ -48,13 +48,17 @@ export class AppComponent {
      }
 
   llenarLista() {
-      this.productosL = [];
        this.productosService.listarProductos()
        .subscribe(
            (res: Response) => {
              const lista = res.json();
              console.log(lista);
+             this.productosL.length = 0;
+
+            //this.productosL = [];
+            console.log(this.productosL);
              this.productosL = lista;
+             console.log(this.productosL);
             }, err => {
              console.log('Error:');
              console.log(err);
@@ -68,14 +72,19 @@ export class AppComponent {
 
 
  verProduct() {
-        this.productosL = [];
+  
         this.productosService.verProducto(this.idProducto)
        .subscribe(
            (res: Response) => {
              const producto = res.json();
              console.log(producto);
+             this.productosL.length = 0;
+             //this.productosL = [];
+             //this.table.renderRows();
+             console.log(this.productosL);
              this.productosL[0] = producto;
-             console.log(this.productosL[0]);
+            console.log(this.productosL[0]);
+            this.table.renderRows();
             }, err => {
              console.log('Error:');
              console.log(err);
@@ -83,7 +92,7 @@ export class AppComponent {
              console.log('¡Producto Seleccionado!');
            }
        );
-        this.table.renderRows();
+      
      }
      
 
